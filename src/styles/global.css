@@ -1,0 +1,7 @@
+@import 'tailwindcss';
+
+/*
+  Design tokens: add them in a `@theme { ... }` block (Tailwind v4 exposes them
+  as utilities, e.g. --color-accent → bg-accent / text-accent).
+  Impeccable will document them in DESIGN.md.
+*/

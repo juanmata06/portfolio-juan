@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "permissions": {
+    "allow": [
+      "Bash(pnpm dev)",
+      "Bash(pnpm build)",
+      "Bash(pnpm check)",
+      "Bash(pnpm preview)",
+      "Bash(pnpm format)",
+      "Bash(pnpm format:check)",
+      "Bash(pnpm astro dev:*)",
+      "Bash(pnpm astro check:*)",
+      "Bash(pnpm exec astro dev:*)",
+      "Bash(astro dev:*)",
+      "Bash(pnpm supabase status:*)",
+      "Bash(pnpm supabase functions list:*)",
+      "Bash(pnpm supabase migration list:*)",
+      "mcp__astro-docs"
+    ],
+    "deny": ["Read(./.env)", "Read(./.env.*)", "Read(./supabase/functions/.env)"]
+  },
+  "enabledMcpjsonServers": ["astro-docs", "supabase"]
+}

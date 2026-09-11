@@ -1,0 +1,51 @@
+---
+/*
+  Pill button. Renders an <a> when `href` is given, otherwise a <button>
+  (type="button" by default). Any other attribute (aria-*, data-*, disabled…)
+  is passed through to the element.
+
+  - primary:   accent fill, for the main action
+  - secondary: surface fill with a border, for everything else
+  Buttons never have shadows.
+*/
+import type { HTMLAttributes } from 'astro/types';
+
+type Variant = 'primary' | 'secondary';
+type Size = 'sm' | 'md';
+
+type Props = {
+  variant?: Variant;
+  size?: Size;
+} & ((HTMLAttributes<'a'> & { href: string }) | (HTMLAttributes<'button'> & { href?: never }));
+
+const { variant = 'primary', size = 'md', class: className, ...attrs } = Astro.props;
+
+const Tag = attrs.href ? 'a' : 'button';
+const type = Tag === 'button' ? ((attrs as HTMLAttributes<'button'>).type ?? 'button') : undefined;
+
+const variants: Record<Variant, string> = {
+  primary: 'border-transparent bg-accent text-on-accent hover:opacity-90',
+  secondary: 'border-line bg-surface text-ink hover:border-muted',
+};
+
+const sizes: Record<Size, string> = {
+  sm: 'px-4 py-2 text-sm',
+  md: 'px-5 py-2.5 text-base',
+};
+---
+
+<Tag
+  {...attrs}
+  type={type}
+  class:list={[
+    'inline-flex cursor-pointer items-center justify-center gap-2 rounded-full border font-medium transition duration-200 select-none',
+    'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent',
+    'motion-safe:active:scale-[0.98]',
+    'disabled:pointer-events-none disabled:opacity-50',
+    variants[variant],
+    sizes[size],
+    className,
+  ]}
+>
+  <slot />
+</Tag>

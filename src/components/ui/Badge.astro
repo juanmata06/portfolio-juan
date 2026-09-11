@@ -1,0 +1,21 @@
+---
+/*
+  Static pill label with the accent square (roles, project type, duration…).
+  Same shape as Button but not interactive. Badges never have shadows.
+*/
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<span
+  class:list={[
+    'inline-flex items-center gap-2 rounded-full border border-line bg-surface px-4 py-2 font-medium',
+    className,
+  ]}
+>
+  <span class="size-3.5 shrink-0 rounded-[4px] bg-accent" aria-hidden="true"></span>
+  <slot />
+</span>

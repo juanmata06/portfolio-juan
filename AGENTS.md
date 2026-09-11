@@ -57,6 +57,14 @@ Manage the background server with `astro dev stop`, `astro dev status`, and `ast
   saved choice when the OS theme changes (live or while the site was closed),
   and toggling back to the OS theme clears it. `dark:` respects both the OS
   preference and `data-theme`.
+- Buttons and badges: use `src/components/ui/Button.astro` (interactive:
+  hover, focus, active, disabled; `<a>` with `href`, otherwise `<button>`) and
+  `src/components/ui/Badge.astro` (same pill shape, not interactive). Never
+  add shadows to buttons or badges.
+- Every clickable bordered element (buttons, project cards, contact cards…)
+  shares the same hover affordance: the border darkens to `muted`
+  (`transition-colors hover:border-muted`), never a shadow. Non-clickable
+  elements (badges, static cards) don't react to hover.
 - Font: Libre Franklin from Google, self-hosted through the Astro Fonts API
   (`fonts` in `astro.config.mjs`) and mapped to Tailwind's `font-sans`, so it
   is the default everywhere. Every page needs

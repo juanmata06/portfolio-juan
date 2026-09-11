@@ -5,6 +5,25 @@
 */
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ThemeToggle from '../components/ThemeToggle.astro';
+import Badge from '../components/ui/Badge.astro';
+import Button from '../components/ui/Button.astro';
+import ContactCard from '../components/home/ContactCard.astro';
+import ProjectCard from '../components/home/ProjectCard.astro';
+
+const projects = [
+  {
+    title: 'Lorem ipsum',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.',
+  },
+  {
+    title: 'Dolor sit amet',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.',
+  },
+  {
+    title: 'Consectetur elit',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.',
+  },
+];
 
 const swatches = [
   { name: 'canvas', use: 'Page background', class: 'bg-canvas' },
@@ -20,7 +39,7 @@ const swatches = [
 <BaseLayout title="Juan — Product Manager">
   <ThemeToggle class="fixed top-5 right-5 z-50" />
 
-  <main class="mx-auto max-w-3xl px-6 py-24">
+  <main class="mx-auto max-w-5xl px-6 py-24">
     <h1 class="text-5xl font-bold tracking-tight sm:text-7xl">Hi, I'm Juan.</h1>
     <p class="mt-6 text-2xl leading-snug font-medium">
       Product Manager y consultor en tecnología y soluciones digitales.
@@ -32,18 +51,28 @@ const swatches = [
     </p>
 
     <div class="mt-8 flex flex-wrap gap-3">
-      <a
-        href="/preview/home"
-        class="rounded-full bg-accent px-5 py-2.5 font-medium text-on-accent transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-      >
-        Home preview
-      </a>
-      <a
-        href="/preview/detail"
-        class="rounded-full border border-line bg-surface px-5 py-2.5 font-medium transition-colors hover:border-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-      >
+      <Button href="/preview/home">Home preview</Button>
+      <Button href="/preview/detail" variant="secondary">
         Detail preview
-      </a>
+      </Button>
+    </div>
+
+    <h2 class="mt-16 text-2xl font-bold">Buttons</h2>
+    <div class="mt-6 flex flex-wrap items-center gap-3">
+      <Button>Primary</Button>
+      <Button variant="secondary">Secondary</Button>
+      <Button size="sm">Primary sm</Button>
+      <Button variant="secondary" size="sm">
+        Secondary sm
+      </Button>
+      <Button disabled>Disabled</Button>
+    </div>
+
+    <h2 class="mt-16 text-2xl font-bold">Badges</h2>
+    <div class="mt-6 flex flex-wrap gap-3">
+      <Badge>Freelance</Badge>
+      <Badge>5 months</Badge>
+      <Badge>Role: Product Manager</Badge>
     </div>
 
     <article class="mt-16 rounded-2xl border border-line bg-surface p-8">
@@ -55,17 +84,25 @@ const swatches = [
         </a>{' '}
         in the accent color.
       </p>
-      <div class="mt-6 flex flex-wrap gap-3">
-        <span class="inline-flex items-center gap-2 rounded-full border border-line bg-canvas px-4 py-2 font-medium">
-          <span class="size-3.5 rounded-[4px] bg-accent"></span>
-          Product Manager
-        </span>
-        <span class="inline-flex items-center gap-2 rounded-full border border-line bg-canvas px-4 py-2 font-medium">
-          <span class="size-3.5 rounded-[4px] bg-accent"></span>
-          Consultoría digital
-        </span>
-      </div>
     </article>
+
+    <h2 class="mt-16 text-2xl font-bold">Project cards</h2>
+    <p class="mt-2 text-muted">Hover or focus a card to reveal its text.</p>
+    <div class="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {projects.map((project) => (
+        <ProjectCard
+          href="/preview/detail"
+          title={project.title}
+          description={project.description}
+        />
+      ))}
+    </div>
+
+    <h2 class="mt-16 text-2xl font-bold">Contact cards</h2>
+    <div class="mt-6 grid gap-6 sm:grid-cols-2">
+      <ContactCard href="#" title="Work with me?" />
+      <ContactCard href="#" title="Hire me?" />
+    </div>
 
     <h2 class="mt-16 text-2xl font-bold">Color tokens</h2>
     <ul class="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-4">

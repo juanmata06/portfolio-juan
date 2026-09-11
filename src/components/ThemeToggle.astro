@@ -6,6 +6,8 @@
   Switching back to the OS theme clears the choice, so the site follows the OS
   again. The parent decides the position through `class`.
 */
+import Button from './ui/Button.astro';
+
 interface Props {
   class?: string;
 }
@@ -13,14 +15,7 @@ interface Props {
 const { class: className } = Astro.props;
 ---
 
-<button
-  type="button"
-  data-theme-toggle
-  class:list={[
-    'inline-flex items-center rounded-full border border-line bg-surface/90 px-4 py-2 text-sm font-medium shadow-sm backdrop-blur transition-shadow hover:shadow focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent',
-    className,
-  ]}
->
+<Button variant="secondary" size="sm" class={className} data-theme-toggle>
   <!-- Shown in light mode: offers dark -->
   <span class="inline-flex items-center gap-2 dark:hidden">
     <svg
@@ -61,7 +56,7 @@ const { class: className } = Astro.props;
       <span class="sr-only">Switch to </span>Light<span class="sr-only"> theme</span>
     </span>
   </span>
-</button>
+</Button>
 
 <script>
   const root = document.documentElement;

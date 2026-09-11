@@ -6,6 +6,7 @@
   src/components/preview/ and src/pages/preview/ once the real components and
   pages exist.
 */
+import { Font } from 'astro:assets';
 import '../../styles/global.css';
 
 const rows = Array.from(
@@ -38,14 +39,9 @@ const keys = [
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Project detail page</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
+    <Font cssVariable="--font-libre-franklin" preload />
   </head>
-  <body class="bg-canvas font-[family-name:'Libre_Franklin',ui-sans-serif,system-ui,sans-serif] text-ink antialiased">
+  <body class="bg-canvas text-ink antialiased">
     <!-- Theme toggle -->
     <button
       id="themeToggle"

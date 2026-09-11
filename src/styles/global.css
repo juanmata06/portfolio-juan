@@ -63,6 +63,16 @@
   --color-on-accent: light-dark(#ffffff, #131416);
 }
 
+/*
+  Font — Libre Franklin, configured in astro.config.mjs (Astro Fonts API) and
+  loaded by the <Font /> component in the page <head>. `font-sans` is Tailwind's
+  default family, so the whole site uses it without any class. The fallback
+  stack applies on pages that don't render <Font />.
+*/
+@theme inline {
+  --font-sans: var(--font-libre-franklin, ui-sans-serif, system-ui, sans-serif);
+}
+
 @layer base {
   html {
     background-color: var(--color-canvas);

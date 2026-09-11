@@ -1,17 +1,81 @@
 ---
-import '../styles/global.css';
+/*
+  SAMPLE CONTENT to test the light/dark theme and the design tokens.
+  Replace it with the real home.
+*/
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ThemeToggle from '../components/ThemeToggle.astro';
+
+const swatches = [
+  { name: 'canvas', use: 'Page background', class: 'bg-canvas' },
+  { name: 'surface', use: 'Cards, pills', class: 'bg-surface' },
+  { name: 'line', use: 'Borders, dividers', class: 'bg-line' },
+  { name: 'ink', use: 'Primary text', class: 'bg-ink' },
+  { name: 'muted', use: 'Secondary text', class: 'bg-muted' },
+  { name: 'accent', use: 'Brand, links', class: 'bg-accent' },
+  { name: 'on-accent', use: 'Text on accent', class: 'bg-on-accent' },
+];
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" href="/favicon.ico" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Astro</title>
-  </head>
-  <body>
-    <h1>Astro</h1>
-  </body>
-</html>
+<BaseLayout title="Juan — Product Manager">
+  <ThemeToggle class="fixed top-5 right-5 z-50" />
+
+  <main class="mx-auto max-w-3xl px-6 py-24">
+    <h1 class="text-5xl font-bold tracking-tight sm:text-7xl">Hi, I'm Juan.</h1>
+    <p class="mt-6 text-2xl leading-snug font-medium">
+      Product Manager y consultor en tecnología y soluciones digitales.
+    </p>
+    <p class="mt-4 max-w-prose leading-relaxed text-muted">
+      Sample content to test the theme. The page follows your system theme. The button in the top
+      right corner overrides it and is remembered across pages and reloads, until you change your
+      system theme again.
+    </p>
+
+    <div class="mt-8 flex flex-wrap gap-3">
+      <a
+        href="/preview/home"
+        class="rounded-full bg-accent px-5 py-2.5 font-medium text-on-accent transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+      >
+        Home preview
+      </a>
+      <a
+        href="/preview/detail"
+        class="rounded-full border border-line bg-surface px-5 py-2.5 font-medium transition-colors hover:border-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+      >
+        Detail preview
+      </a>
+    </div>
+
+    <article class="mt-16 rounded-2xl border border-line bg-surface p-8">
+      <h2 class="text-2xl font-bold">A card on the surface color</h2>
+      <p class="mt-3 leading-relaxed text-muted">
+        Secondary text on a card, with an{' '}
+        <a href="#" class="text-accent underline underline-offset-4 hover:no-underline">
+          inline link
+        </a>{' '}
+        in the accent color.
+      </p>
+      <div class="mt-6 flex flex-wrap gap-3">
+        <span class="inline-flex items-center gap-2 rounded-full border border-line bg-canvas px-4 py-2 font-medium">
+          <span class="size-3.5 rounded-[4px] bg-accent"></span>
+          Product Manager
+        </span>
+        <span class="inline-flex items-center gap-2 rounded-full border border-line bg-canvas px-4 py-2 font-medium">
+          <span class="size-3.5 rounded-[4px] bg-accent"></span>
+          Consultoría digital
+        </span>
+      </div>
+    </article>
+
+    <h2 class="mt-16 text-2xl font-bold">Color tokens</h2>
+    <ul class="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-4">
+      {swatches.map((swatch) => (
+        <li>
+          <span class:list={['block h-16 rounded-xl border border-line', swatch.class]} />
+          <span class="mt-2 block text-sm font-semibold">{swatch.name}</span>
+          <span class="block text-sm text-muted">{swatch.use}</span>
+        </li>
+      ))}
+    </ul>
+  </main>
+</BaseLayout>

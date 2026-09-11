@@ -50,8 +50,18 @@ Manage the background server with `astro dev stop`, `astro dev status`, and `ast
   arbitrary hex values.
 - Theming: the site follows the OS light/dark preference through
   `light-dark()` tokens, so colors switch on their own; do not add `dark:`
-  variants for colors. A theme toggle only needs to set
-  `data-theme="light" | "dark"` on `<html>`; `dark:` respects both.
+  variants for colors. `ThemeToggle.astro` overrides it by setting
+  `data-theme="light" | "dark"` on `<html>` and saving `{ theme, os }` in
+  `localStorage` (`theme` key); `BaseLayout.astro` restores it before the
+  first paint. Changing the OS theme must always win: the layout drops the
+  saved choice when the OS theme changes (live or while the site was closed),
+  and toggling back to the OS theme clears it. `dark:` respects both the OS
+  preference and `data-theme`.
+- Font: Libre Franklin from Google, self-hosted through the Astro Fonts API
+  (`fonts` in `astro.config.mjs`) and mapped to Tailwind's `font-sans`, so it
+  is the default everywhere. Every page needs
+  `<Font cssVariable="--font-libre-franklin" preload />` in its `<head>` (the
+  root layout); do not add Google Fonts `<link>` tags.
 - The user builds the contact backend (Supabase/Deno) step by step: do not
   create Supabase functions, migrations or clients on your own initiative;
   explain and guide each step.

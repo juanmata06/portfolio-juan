@@ -22,6 +22,10 @@ pnpm-debug.log*
 .claude/settings.local.json
 # Impeccable binary (downloaded automatically on first use)
 .claude/skills/impeccable/scripts/bin/
+# Impeccable local state (hook cache, personal overrides, live sessions)
+.impeccable/hook.cache.json
+.impeccable/config.local.json
+.impeccable/live/sessions/
 
 # macOS-specific files
 .DS_Store

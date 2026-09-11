@@ -1,0 +1,69 @@
+---
+/*
+  Root layout: the shared <html>/<head>/<body> for every page.
+  Pages pass their own title/description and render their content in <slot />.
+*/
+import { Font } from 'astro:assets';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'Product Manager y consultor en tecnología y soluciones digitales.' } =
+  Astro.props;
+---
+
+<html lang="es" class="motion-safe:scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <Font cssVariable="--font-libre-franklin" preload />
+
+    {/*
+        Theme: the OS theme applies by default. A choice made with the theme
+        toggle is saved as { theme, os } and restored here before the first
+        paint (no flash), but only while the OS theme is still the one it was
+        made against: changing the OS theme always wins over a manual choice,
+        whether the page is open or not.
+      */}
+    <script is:inline>
+      (() => {
+        const root = document.documentElement;
+        const media = window.matchMedia('(prefers-color-scheme: dark)');
+        const osTheme = () => (media.matches ? 'dark' : 'light');
+
+        const clearChoice = () => {
+          root.removeAttribute('data-theme');
+          try {
+            localStorage.removeItem('theme');
+          } catch {}
+        };
+
+        try {
+          const saved = JSON.parse(localStorage.getItem('theme') || 'null');
+          if (saved && saved.os === osTheme() && ['light', 'dark'].includes(saved.theme)) {
+            root.dataset.theme = saved.theme;
+          } else {
+            clearChoice();
+          }
+        } catch {
+          clearChoice();
+        }
+
+        media.addEventListener('change', clearChoice);
+      })();
+    </script>
+  </head>
+  <body class="antialiased">
+    <slot />
+  </body>
+</html>

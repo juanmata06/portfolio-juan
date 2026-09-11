@@ -1,0 +1,211 @@
+---
+/*
+  TEMPORARY — 1:1 port of the project detail prototype
+  (prueba_landing/detail.html) with the hardcoded colors replaced by the design
+  tokens, to validate the palette and the light/dark theme. Delete
+  src/components/preview/ and src/pages/preview/ once the real components and
+  pages exist.
+*/
+import '../../styles/global.css';
+
+const rows = Array.from(
+  { length: 4 },
+  () => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.',
+);
+
+const keys = [
+  {
+    title: 'Lorem ipsum',
+    border: 'border-b border-line sm:border-r',
+  },
+  {
+    title: 'Dolor sit amet',
+    border: 'border-b border-line',
+  },
+  {
+    title: 'Consectetur elit',
+    border: 'border-b border-line sm:border-r sm:border-b-0',
+  },
+  {
+    title: 'Adipiscing tempor',
+    border: '',
+  },
+];
+---
+
+<html lang="es" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project detail page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-canvas font-[family-name:'Libre_Franklin',ui-sans-serif,system-ui,sans-serif] text-ink antialiased">
+    <!-- Theme toggle -->
+    <button
+      id="themeToggle"
+      type="button"
+      class="fixed top-5 right-5 z-50 rounded-full border border-line bg-surface/90 px-4 py-2 text-sm font-medium shadow-sm backdrop-blur transition hover:shadow"
+    >
+      <span class="dark:hidden">🌙 Dark</span>
+      <span class="hidden dark:inline">☀️ Light</span>
+    </button>
+
+    <main class="mx-auto w-full max-w-[1280px]">
+      <!-- ===================== TITLE SECTION ===================== -->
+      <section class="px-8 pt-10 pb-10">
+        <h1 class="mx-auto max-w-[900px] text-center text-[70px] leading-tight font-bold tracking-tight">
+          Project Title
+        </h1>
+        <p class="mx-auto mt-6 max-w-[650px] text-center text-[16px] text-muted">
+          A short project description that explains the purpose and the value of the work in one or
+          two lines.
+        </p>
+
+        <!-- Badges -->
+        <div class="mt-8 flex flex-wrap items-center justify-center gap-5">
+          <span class="inline-flex items-center gap-2 rounded-full border border-line bg-surface px-4 py-2 text-[16px] font-medium">
+            <span class="h-3.5 w-3.5 rounded-[4px] bg-accent"></span>
+            Freelance
+          </span>
+          <span class="inline-flex items-center gap-2 rounded-full border border-line bg-surface px-4 py-2 text-[16px] font-medium">
+            <span class="h-3.5 w-3.5 rounded-[4px] bg-accent"></span>5 months
+          </span>
+          <span class="inline-flex items-center gap-2 rounded-full border border-line bg-surface px-4 py-2 text-[16px] font-medium">
+            <span class="h-3.5 w-3.5 rounded-[4px] bg-accent"></span>
+            Role: Product Manager
+          </span>
+        </div>
+
+        <!-- Image -->
+        <div class="mx-auto mt-10 flex aspect-[900/460] w-full max-w-[900px] items-center justify-center overflow-hidden rounded-2xl bg-surface text-muted ring-1 ring-line">
+          <span class="text-sm">Image placeholder</span>
+        </div>
+      </section>
+
+      <div class="mx-auto h-px w-[1024px] max-w-[calc(100%-16rem)] bg-line"></div>
+
+      <!-- ===================== CONTEXT SECTION ===================== -->
+      <section class="px-8 py-14 text-center">
+        <p class="text-[12px] font-semibold tracking-[0.2em] text-muted uppercase">Context</p>
+        <h2 class="mx-auto mt-6 max-w-[907px] text-[44px] leading-tight font-bold">
+          Lorem ipsum dolor sit amet consectetur.
+        </h2>
+        <p class="mx-auto mt-6 max-w-[680px] text-[16px] leading-relaxed">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+          ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+          ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        </p>
+        <div class="mx-auto mt-10 flex aspect-[900/460] w-full max-w-[900px] items-center justify-center overflow-hidden rounded-2xl bg-surface text-muted ring-1 ring-line">
+          <span class="text-sm">Image placeholder</span>
+        </div>
+      </section>
+
+      <div class="mx-auto h-px w-[1024px] max-w-[calc(100%-16rem)] bg-line"></div>
+
+      <!-- ===================== CHALLENGES SECTION ===================== -->
+      <section class="px-8 py-14 text-center">
+        <p class="text-[12px] font-semibold tracking-[0.2em] text-muted uppercase">Challenges</p>
+        <h2 class="mx-auto mt-6 max-w-[697px] text-[44px] leading-tight font-bold">
+          Lorem ipsum, more challenges.
+        </h2>
+        <p class="mx-auto mt-6 max-w-[538px] text-[16px]">
+          Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod.
+        </p>
+
+        <!-- Cards -->
+        <div class="mx-auto mt-10 max-w-[1088px] divide-y divide-line overflow-hidden rounded-2xl border border-line">
+          {rows.map((text) => (
+            <div class="flex items-center gap-4 bg-surface px-10 py-8 text-left">
+              <span class="h-[18px] w-[18px] shrink-0 rounded-full bg-accent" />
+              <p class="text-[16px] text-muted">{text}</p>
+            </div>
+          ))}
+        </div>
+
+        <p class="mx-auto mt-12 max-w-[680px] text-[16px] leading-relaxed">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+          ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+          ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        </p>
+
+        <div class="mx-auto mt-10 flex aspect-[900/460] w-full max-w-[900px] items-center justify-center overflow-hidden rounded-2xl bg-surface text-muted ring-1 ring-line">
+          <span class="text-sm">Image placeholder</span>
+        </div>
+      </section>
+
+      <div class="mx-auto h-px w-[1024px] max-w-[calc(100%-16rem)] bg-line"></div>
+
+      <!-- ===================== KEYS SECTION ===================== -->
+      <section class="px-8 py-14 text-center">
+        <p class="text-[12px] font-semibold tracking-[0.2em] text-muted uppercase">Keys</p>
+        <h2 class="mx-auto mt-6 max-w-[549px] text-[44px] leading-tight font-bold">
+          Lorem ipsum principles.
+        </h2>
+
+        <div class="mx-auto mt-10 grid max-w-[1088px] grid-cols-1 overflow-hidden rounded-2xl border border-line sm:grid-cols-2">
+          {keys.map((key) => (
+            <div class:list={['bg-surface p-10 text-left', key.border]}>
+              <span class="mb-4 block h-[18px] w-[18px] rounded-full bg-accent" />
+              <h3 class="text-[18px] font-bold">{key.title}</h3>
+              <p class="mt-2 text-[16px] text-muted">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <div class="mx-auto h-px w-[1024px] max-w-[calc(100%-16rem)] bg-line"></div>
+
+      <!-- ===================== FINAL SECTION ===================== -->
+      <section class="px-8 py-14 text-center">
+        <p class="text-[12px] font-semibold tracking-[0.2em] text-muted uppercase">Final result</p>
+        <h2 class="mx-auto mt-6 max-w-[549px] text-[44px] leading-tight font-bold">
+          Lorem ipsum principles.
+        </h2>
+
+        <div class="mx-auto mt-10 flex aspect-[900/460] w-full max-w-[900px] items-center justify-center overflow-hidden rounded-2xl bg-surface text-muted ring-1 ring-line">
+          <span class="text-sm">Image placeholder</span>
+        </div>
+
+        <!-- Cards -->
+        <div class="mx-auto mt-12 max-w-[1088px] divide-y divide-line overflow-hidden rounded-2xl border border-line">
+          {rows.map((text) => (
+            <div class="flex items-center gap-4 bg-surface px-10 py-8 text-left">
+              <span class="h-[18px] w-[18px] shrink-0 rounded-full bg-accent" />
+              <p class="text-[16px] text-muted">{text}</p>
+            </div>
+          ))}
+        </div>
+
+        <!-- Small image -->
+        <div class="mx-auto mt-12 flex aspect-[300/160] w-full max-w-[300px] items-center justify-center overflow-hidden rounded-xl bg-surface text-muted ring-1 ring-line">
+          <span class="text-sm">Image</span>
+        </div>
+
+        <h3 class="mx-auto mt-10 max-w-[549px] text-[44px] leading-tight font-bold">Final notes</h3>
+        <p class="mx-auto mt-6 max-w-[680px] text-[16px] leading-relaxed">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+          ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+          ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        </p>
+      </section>
+    </main>
+
+    <script>
+      // Theme toggle: overrides the OS theme by setting data-theme on <html>
+      const root = document.documentElement;
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+      document.getElementById('themeToggle')?.addEventListener('click', () => {
+        const isDark = root.dataset.theme ? root.dataset.theme === 'dark' : prefersDark.matches;
+        root.dataset.theme = isDark ? 'light' : 'dark';
+      });
+    </script>
+  </body>
+</html>

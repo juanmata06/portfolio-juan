@@ -1,0 +1,376 @@
+---
+/*
+  TEMPORARY — 1:1 port of the home prototype (prueba_landing/home.html) with the
+  hardcoded colors replaced by the design tokens, to validate the palette and
+  the light/dark theme. Delete src/components/preview/ and src/pages/preview/
+  once the real components and pages exist.
+*/
+import '../../styles/global.css';
+
+const projects = [
+  'Lorem ipsum',
+  'Dolor sit amet',
+  'Consectetur elit',
+  'Adipiscing tempor',
+  'Eiusmod labore',
+  'Magna aliqua',
+];
+---
+
+<html lang="es" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Juan — Product Manager</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-canvas font-[family-name:'Libre_Franklin',ui-sans-serif,system-ui,sans-serif] text-ink antialiased">
+    <!-- ===================== SIDEBAR ===================== -->
+    <nav
+      aria-label="Navegación principal"
+      class="fixed inset-y-0 left-0 z-40 flex w-[72px] flex-col items-center justify-between border-r border-line bg-surface py-6"
+    >
+      <!-- Sections -->
+      <div class="flex flex-col items-center gap-3">
+        <a
+          href="#home"
+          data-nav="home"
+          title="Home"
+          aria-label="Home"
+          class="group relative flex h-11 w-11 items-center justify-center rounded-xl text-muted transition-colors duration-200 hover:bg-line/60 data-[active=true]:bg-accent/12 data-[active=true]:text-accent"
+        >
+          <span class="absolute top-1/2 -right-[10px] h-6 w-[3px] -translate-y-1/2 rounded-full bg-accent opacity-0 transition-opacity duration-200 group-data-[active=true]:opacity-100"></span>
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M3 10.5 12 3l9 7.5"></path>
+            <path d="M5.25 9.75V20a1 1 0 0 0 1 1h11.5a1 1 0 0 0 1-1V9.75"></path>
+            <path d="M9.75 21v-6.25h4.5V21"></path>
+          </svg>
+        </a>
+
+        <a
+          href="#experience"
+          data-nav="experience"
+          title="Experience"
+          aria-label="Experience"
+          class="group relative flex h-11 w-11 items-center justify-center rounded-xl text-muted transition-colors duration-200 hover:bg-line/60 data-[active=true]:bg-accent/12 data-[active=true]:text-accent"
+        >
+          <span class="absolute top-1/2 -right-[10px] h-6 w-[3px] -translate-y-1/2 rounded-full bg-accent opacity-0 transition-opacity duration-200 group-data-[active=true]:opacity-100"></span>
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <rect x="3" y="7.5" width="18" height="12.5" rx="2"></rect>
+            <path d="M9 7.5V5.5a1.5 1.5 0 0 1 1.5-1.5h3A1.5 1.5 0 0 1 15 5.5v2"></path>
+            <path d="M3 12.5h18"></path>
+          </svg>
+        </a>
+
+        <a
+          href="#contacto"
+          data-nav="contacto"
+          title="Contacto"
+          aria-label="Contacto"
+          class="group relative flex h-11 w-11 items-center justify-center rounded-xl text-muted transition-colors duration-200 hover:bg-line/60 data-[active=true]:bg-accent/12 data-[active=true]:text-accent"
+        >
+          <span class="absolute top-1/2 -right-[10px] h-6 w-[3px] -translate-y-1/2 rounded-full bg-accent opacity-0 transition-opacity duration-200 group-data-[active=true]:opacity-100"></span>
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <rect x="3" y="5.5" width="18" height="13" rx="2"></rect>
+            <path d="m3.5 7 8.5 6 8.5-6"></path>
+          </svg>
+        </a>
+      </div>
+
+      <!-- External links -->
+      <div class="flex flex-col items-center gap-3">
+        <div class="mb-1 h-px w-8 bg-line"></div>
+
+        <a
+          href="#"
+          title="GitHub"
+          aria-label="GitHub"
+          class="flex h-11 w-11 items-center justify-center rounded-xl text-muted transition-colors duration-200 hover:bg-line/60 hover:text-accent"
+        >
+          <svg
+            width="22"
+            height="22"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12 12 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"></path>
+          </svg>
+        </a>
+
+        <a
+          href="#"
+          title="LinkedIn"
+          aria-label="LinkedIn"
+          class="flex h-11 w-11 items-center justify-center rounded-xl text-muted transition-colors duration-200 hover:bg-line/60 hover:text-accent"
+        >
+          <svg
+            width="22"
+            height="22"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <rect x="3" y="3" width="18" height="18" rx="2"></rect>
+            <path d="M7.5 10.5V17"></path>
+            <path d="M7.5 7.5v.01"></path>
+            <path d="M11.5 17v-3.75a2.25 2.25 0 0 1 4.5 0V17"></path>
+            <path d="M11.5 10.5V17"></path>
+          </svg>
+        </a>
+
+        <a
+          href="#"
+          title="Web"
+          aria-label="Web"
+          class="flex h-11 w-11 items-center justify-center rounded-xl text-muted transition-colors duration-200 hover:bg-line/60 hover:text-accent"
+        >
+          <svg
+            width="22"
+            height="22"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <circle cx="12" cy="12" r="9"></circle>
+            <path d="M3 12h18"></path>
+            <path d="M12 3c2.5 2.7 3.75 5.7 3.75 9S14.5 18.3 12 21c-2.5-2.7-3.75-5.7-3.75-9S9.5 5.7 12 3Z"></path>
+          </svg>
+        </a>
+
+        <a
+          href="mailto:[TU EMAIL]"
+          title="Email"
+          aria-label="Email"
+          class="flex h-11 w-11 items-center justify-center rounded-xl text-muted transition-colors duration-200 hover:bg-line/60 hover:text-accent"
+        >
+          <svg
+            width="22"
+            height="22"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <rect x="3" y="5.5" width="18" height="13" rx="2"></rect>
+            <path d="m3.5 7 8.5 6 8.5-6"></path>
+          </svg>
+        </a>
+      </div>
+    </nav>
+
+    <!-- Theme toggle -->
+    <button
+      id="themeToggle"
+      type="button"
+      class="fixed top-5 right-5 z-50 rounded-full border border-line bg-surface/90 px-4 py-2 text-sm font-medium shadow-sm backdrop-blur transition hover:shadow"
+    >
+      <span class="dark:hidden">🌙 Dark</span>
+      <span class="hidden dark:inline">☀️ Light</span>
+    </button>
+
+    <div class="pl-[72px]">
+      <main class="mx-auto w-full max-w-[1280px]">
+        <!-- ===================== HOME ===================== -->
+        <section id="home" class="px-8 py-14">
+          <div class="flex flex-col items-center gap-12 lg:flex-row lg:items-center lg:gap-16">
+            <div class="flex-1 text-center lg:text-left">
+              <h1 class="text-[48px] leading-[1.08] font-bold tracking-tight sm:text-[70px]">
+                Hi, I'm Juan.
+              </h1>
+              <p class="mx-auto mt-6 max-w-[520px] text-[24px] leading-snug font-medium sm:text-[28px] lg:mx-0">
+                Product Manager y consultor en tecnología y soluciones digitales.
+              </p>
+              <p class="mx-auto mt-6 max-w-[520px] text-[16px] leading-relaxed text-muted lg:mx-0">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                exercitation.
+              </p>
+
+              <div class="mt-8 flex flex-wrap items-center justify-center gap-5 lg:justify-start">
+                <span class="inline-flex items-center gap-2 rounded-full border border-line bg-surface px-4 py-2 text-[16px] font-medium">
+                  <span class="h-3.5 w-3.5 rounded-[4px] bg-accent"></span>
+                  Product Manager
+                </span>
+                <span class="inline-flex items-center gap-2 rounded-full border border-line bg-surface px-4 py-2 text-[16px] font-medium">
+                  <span class="h-3.5 w-3.5 rounded-[4px] bg-accent"></span>
+                  Consultoría digital
+                </span>
+              </div>
+            </div>
+
+            <!-- Vertical placeholder (future animated character video) -->
+            <div class="w-full max-w-[380px] shrink-0">
+              <div class="flex aspect-[3/4] w-full items-center justify-center overflow-hidden rounded-2xl border border-line bg-surface text-muted">
+                <span class="text-sm">Video placeholder</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div class="mx-auto h-px w-[1024px] max-w-[calc(100%-16rem)] bg-line"></div>
+
+        <!-- ===================== EXPERIENCE ===================== -->
+        <section id="experience" class="px-8 py-14">
+          <p class="text-[12px] font-semibold tracking-[0.2em] text-muted uppercase">Experience</p>
+          <h2 class="mt-6 max-w-[907px] text-[32px] leading-tight font-bold sm:text-[44px]">
+            I've been working on:
+          </h2>
+
+          <div class="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {projects.map((title) => (
+              <a
+                href="/preview/detail"
+                class="group relative block aspect-[16/10] overflow-hidden rounded-2xl border border-line bg-surface focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+              >
+                <span class="absolute inset-0 flex items-center justify-center text-sm text-muted transition-opacity duration-300 group-hover:opacity-0 group-focus-visible:opacity-0">
+                  Image placeholder
+                </span>
+                <span class="absolute inset-0 flex flex-col justify-end gap-2 p-6 text-left opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100">
+                  <span class="block h-[18px] w-[18px] rounded-full bg-accent" />
+                  <span class="block text-[18px] font-bold">{title}</span>
+                  <span class="block text-[16px] text-muted">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.
+                  </span>
+                </span>
+              </a>
+            ))}
+          </div>
+        </section>
+
+        <div class="mx-auto h-px w-[1024px] max-w-[calc(100%-16rem)] bg-line"></div>
+
+        <!-- ===================== CONTACTO ===================== -->
+        <section id="contacto" class="px-8 py-14">
+          <p class="text-[12px] font-semibold tracking-[0.2em] text-muted uppercase">Contacto</p>
+          <h2 class="mt-6 max-w-[907px] text-[32px] leading-tight font-bold sm:text-[44px]">
+            Would you like to...
+          </h2>
+
+          <div class="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2">
+            <a
+              href="#"
+              class="group relative block aspect-[16/9] overflow-hidden rounded-2xl border border-line bg-surface transition-shadow duration-200 hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+            >
+              <span class="absolute inset-0 flex items-center justify-center text-sm text-muted">
+                Image placeholder
+              </span>
+              <span class="absolute inset-x-0 bottom-0 flex items-center gap-3 px-8 py-6">
+                <span class="block h-[18px] w-[18px] shrink-0 rounded-full bg-accent"></span>
+                <span class="text-[24px] font-bold">Work with me?</span>
+              </span>
+            </a>
+
+            <a
+              href="mailto:[TU EMAIL]"
+              class="group relative block aspect-[16/9] overflow-hidden rounded-2xl border border-line bg-surface transition-shadow duration-200 hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+            >
+              <span class="absolute inset-0 flex items-center justify-center text-sm text-muted">
+                Image placeholder
+              </span>
+              <span class="absolute inset-x-0 bottom-0 flex items-center gap-3 px-8 py-6">
+                <span class="block h-[18px] w-[18px] shrink-0 rounded-full bg-accent"></span>
+                <span class="text-[24px] font-bold">Hire me?</span>
+              </span>
+            </a>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script>
+      // Theme toggle: overrides the OS theme by setting data-theme on <html>
+      const root = document.documentElement;
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+      document.getElementById('themeToggle')?.addEventListener('click', () => {
+        const isDark = root.dataset.theme ? root.dataset.theme === 'dark' : prefersDark.matches;
+        root.dataset.theme = isDark ? 'light' : 'dark';
+      });
+
+      // Highlight the sidebar link of the section currently in view
+      const links = [...document.querySelectorAll<HTMLAnchorElement>('[data-nav]')];
+      const sections = links
+        .map((l) => document.getElementById(l.dataset.nav ?? ''))
+        .filter((s): s is HTMLElement => s !== null);
+
+      function setActive(id: string) {
+        links.forEach((l) => {
+          l.dataset.active = String(l.dataset.nav === id);
+        });
+      }
+
+      function syncNav() {
+        // An imaginary line at 35% of the viewport height decides the section
+        const marker = window.scrollY + window.innerHeight * 0.35;
+        let current = sections[0];
+        if (!current) return;
+
+        for (const s of sections) {
+          const top = s.getBoundingClientRect().top + window.scrollY;
+          if (top <= marker) current = s;
+        }
+
+        // At the bottom of the page the last section always wins
+        const atBottom =
+          window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
+        if (atBottom) current = sections.at(-1) ?? current;
+
+        setActive(current.id);
+      }
+
+      window.addEventListener('scroll', syncNav, { passive: true });
+      window.addEventListener('resize', syncNav);
+      syncNav();
+    </script>
+  </body>
+</html>

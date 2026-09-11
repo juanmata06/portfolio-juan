@@ -1,7 +1,77 @@
 @import 'tailwindcss';
 
 /*
-  Design tokens: add them in a `@theme { ... }` block (Tailwind v4 exposes them
-  as utilities, e.g. --color-accent → bg-accent / text-accent).
-  Impeccable will document them in DESIGN.md.
+  Theme
+  -----
+  The site follows the visitor's OS theme by default (`color-scheme: light dark`
+  + `light-dark()` tokens), so no JavaScript is needed and there is no flash.
+  A future theme toggle only has to set `data-theme="light" | "dark"` on
+  <html> to override the OS preference.
 */
+:root {
+  color-scheme: light dark;
+}
+:root[data-theme='light'] {
+  color-scheme: light;
+}
+:root[data-theme='dark'] {
+  color-scheme: dark;
+}
+
+/*
+  `dark:` matches the same logic as the tokens: OS dark mode unless
+  data-theme="light", or data-theme="dark" explicitly. Colors switch on their
+  own through the tokens; use `dark:` only for non-color differences.
+*/
+@custom-variant dark {
+  &:where([data-theme='dark'], [data-theme='dark'] *) {
+    @slot;
+  }
+  @media (prefers-color-scheme: dark) {
+    &:where(:root:not([data-theme='light']), :root:not([data-theme='light']) *) {
+      @slot;
+    }
+  }
+}
+
+/*
+  Color tokens — light-dark(<light>, <dark>)
+  Tailwind's default palette is removed so these are the only colors available
+  (`transparent`, `current` and `inherit` still work).
+
+  | Token     | Utility examples              | Use                          |
+  | --------- | ----------------------------- | ---------------------------- |
+  | canvas    | bg-canvas                     | Page background              |
+  | surface   | bg-surface                    | Cards, pills, raised areas   |
+  | line      | border-line, divide-line      | Borders and dividers         |
+  | ink       | text-ink                      | Primary text                 |
+  | muted     | text-muted                    | Secondary text               |
+  | accent    | text-accent, bg-accent/10     | Brand, links, active states  |
+  | on-accent | text-on-accent                | Text on an accent background |
+
+  All text pairs meet WCAG AA (≥ 4.5:1) on both canvas and surface.
+*/
+@theme {
+  --color-*: initial;
+
+  --color-canvas: light-dark(#ffffff, #131416);
+  --color-surface: light-dark(#fafafa, #1b1d20);
+  --color-line: light-dark(#e5e7eb, #34373e);
+  --color-ink: light-dark(#333333, #f2f3f5);
+  --color-muted: light-dark(#6b7280, #9ca3af);
+  --color-accent: light-dark(#0353a4, #6aa6f0);
+  --color-on-accent: light-dark(#ffffff, #131416);
+}
+
+@layer base {
+  html {
+    background-color: var(--color-canvas);
+    color: var(--color-ink);
+    accent-color: var(--color-accent);
+    caret-color: var(--color-accent);
+  }
+
+  ::selection {
+    background-color: color-mix(in oklab, var(--color-accent) 25%, transparent);
+  }
+}

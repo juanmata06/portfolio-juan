@@ -44,6 +44,14 @@ Manage the background server with `astro dev stop`, `astro dev status`, and `ast
   unless explicitly asked.
 - Style only with Tailwind utilities and `@theme` tokens; no loose CSS unless
   justified.
+- Colors come only from the semantic tokens in `src/styles/global.css`
+  (`canvas`, `surface`, `line`, `ink`, `muted`, `accent`, `on-accent`).
+  Tailwind's default palette is disabled on purpose; do not re-enable it or use
+  arbitrary hex values.
+- Theming: the site follows the OS light/dark preference through
+  `light-dark()` tokens, so colors switch on their own; do not add `dark:`
+  variants for colors. A theme toggle only needs to set
+  `data-theme="light" | "dark"` on `<html>`; `dark:` respects both.
 - The user builds the contact backend (Supabase/Deno) step by step: do not
   create Supabase functions, migrations or clients on your own initiative;
   explain and guide each step.

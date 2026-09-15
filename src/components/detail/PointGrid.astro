@@ -1,0 +1,30 @@
+---
+/*
+  Bordered two-column table for the case study "Keys" section: one cell per
+  point, each with the accent dot, a title and a short description. One column
+  on mobile. The dividers are the line color showing through a 1px gap, so any
+  number of items works; with an odd count the last cell spans both columns.
+  Static (not clickable), so it doesn't react to hover. Never has shadows.
+*/
+interface Props {
+  items: { title: string; description: string }[];
+  class?: string;
+}
+
+const { items, class: className } = Astro.props;
+---
+
+<ul
+  class:list={[
+    'grid gap-px overflow-hidden rounded-2xl border border-line bg-line text-left sm:grid-cols-2',
+    className,
+  ]}
+>
+  {items.map((item) => (
+    <li class="bg-surface p-6 sm:p-10 sm:last:odd:col-span-2">
+      <span class="mb-4 block size-4.5 rounded-full bg-accent" aria-hidden="true"></span>
+      <h3 class="text-lg font-bold">{item.title}</h3>
+      <p class="mt-2 text-muted">{item.description}</p>
+    </li>
+  ))}
+</ul>

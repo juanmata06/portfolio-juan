@@ -8,29 +8,18 @@
 */
 import { Font } from 'astro:assets';
 import '../../styles/global.css';
+import PointGrid from '../detail/PointGrid.astro';
+import PointList from '../detail/PointList.astro';
 
-const rows = Array.from(
-  { length: 4 },
-  () => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.',
-);
+const text = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.';
+
+const rows = Array.from({ length: 4 }, () => text);
 
 const keys = [
-  {
-    title: 'Lorem ipsum',
-    border: 'border-b border-line sm:border-r',
-  },
-  {
-    title: 'Dolor sit amet',
-    border: 'border-b border-line',
-  },
-  {
-    title: 'Consectetur elit',
-    border: 'border-b border-line sm:border-r sm:border-b-0',
-  },
-  {
-    title: 'Adipiscing tempor',
-    border: '',
-  },
+  { title: 'Lorem ipsum', description: text },
+  { title: 'Dolor sit amet', description: text },
+  { title: 'Consectetur elit', description: text },
+  { title: 'Adipiscing tempor', description: text },
 ];
 ---
 
@@ -114,15 +103,7 @@ const keys = [
           Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod.
         </p>
 
-        <!-- Cards -->
-        <div class="mx-auto mt-10 max-w-[1088px] divide-y divide-line overflow-hidden rounded-2xl border border-line">
-          {rows.map((text) => (
-            <div class="flex items-center gap-4 bg-surface px-10 py-8 text-left">
-              <span class="h-[18px] w-[18px] shrink-0 rounded-full bg-accent" />
-              <p class="text-[16px] text-muted">{text}</p>
-            </div>
-          ))}
-        </div>
+        <PointList items={rows} class="mx-auto mt-10 max-w-272" />
 
         <p class="mx-auto mt-12 max-w-[680px] text-[16px] leading-relaxed">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
@@ -144,17 +125,7 @@ const keys = [
           Lorem ipsum principles.
         </h2>
 
-        <div class="mx-auto mt-10 grid max-w-[1088px] grid-cols-1 overflow-hidden rounded-2xl border border-line sm:grid-cols-2">
-          {keys.map((key) => (
-            <div class:list={['bg-surface p-10 text-left', key.border]}>
-              <span class="mb-4 block h-[18px] w-[18px] rounded-full bg-accent" />
-              <h3 class="text-[18px] font-bold">{key.title}</h3>
-              <p class="mt-2 text-[16px] text-muted">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.
-              </p>
-            </div>
-          ))}
-        </div>
+        <PointGrid items={keys} class="mx-auto mt-10 max-w-272" />
       </section>
 
       <div class="mx-auto h-px w-[1024px] max-w-[calc(100%-16rem)] bg-line"></div>
@@ -170,15 +141,7 @@ const keys = [
           <span class="text-sm">Image placeholder</span>
         </div>
 
-        <!-- Cards -->
-        <div class="mx-auto mt-12 max-w-[1088px] divide-y divide-line overflow-hidden rounded-2xl border border-line">
-          {rows.map((text) => (
-            <div class="flex items-center gap-4 bg-surface px-10 py-8 text-left">
-              <span class="h-[18px] w-[18px] shrink-0 rounded-full bg-accent" />
-              <p class="text-[16px] text-muted">{text}</p>
-            </div>
-          ))}
-        </div>
+        <PointList items={rows} class="mx-auto mt-12 max-w-272" />
 
         <!-- Small image -->
         <div class="mx-auto mt-12 flex aspect-[300/160] w-full max-w-[300px] items-center justify-center overflow-hidden rounded-xl bg-surface text-muted ring-1 ring-line">

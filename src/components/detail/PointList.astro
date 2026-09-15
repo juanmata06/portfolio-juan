@@ -1,0 +1,31 @@
+---
+/*
+  Bordered list for the case study "Challenges" and "Final result" sections:
+  one row per point, each with the accent dot and the text, split by dividers.
+  Static (not clickable), so it doesn't react to hover. Never has shadows.
+*/
+interface Props {
+  items: string[];
+  class?: string;
+}
+
+const { items, class: className } = Astro.props;
+---
+
+<ul
+  class:list={[
+    'divide-y divide-line overflow-hidden rounded-2xl border border-line bg-surface text-left',
+    className,
+  ]}
+>
+  {items.map((item) => (
+    <li class="flex items-start gap-4 px-6 py-6 sm:px-10 sm:py-8">
+      <!-- mt-0.75 centers the dot on the first line of text -->
+      <span
+        class="mt-0.75 block size-4.5 shrink-0 rounded-full bg-accent"
+        aria-hidden="true"
+      ></span>
+      <p class="text-muted">{item}</p>
+    </li>
+  ))}
+</ul>
